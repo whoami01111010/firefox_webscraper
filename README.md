@@ -18,7 +18,7 @@ Requirements:
 Installation:
     Clone the repository:
 
-    git clone https://github.com/yourusername/firefox-web-scraper.git
+    git clone https://github.com/whoami01111010/firefox-web-scraper.git
     cd firefox-web-scraper
 
 Make the script executable:
