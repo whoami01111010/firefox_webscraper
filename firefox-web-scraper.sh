@@ -16,9 +16,6 @@ print_banner() {
 PROFILE_PATH="/home/robert/.mozilla/firefox/mnu44pif.default-esr"
 PLACES_DB="$PROFILE_PATH/places.sqlite"
 
-# Define the input file (replace with your actual file)
-input_file="txt/all_websites11.txt"
-
 # Check if places.sqlite exists
 if [ ! -f "$PLACES_DB" ]; then
     echo "Error: places.sqlite not found in $PROFILE_PATH"
@@ -48,7 +45,7 @@ list_search_keywords() {
     sqlite3 "$PLACES_DB" "
     SELECT url FROM moz_places
     WHERE url LIKE '%search?q=%' OR url LIKE '%q=%' OR url LIKE '%query=%';
-    " | sed -E 's/.*[?&](q|query|search)=([^&]+).*/\2/' | sed 's/+/\ /g' | head -n 10 > "$filename"
+    " | sed -E 's/.*[?&](q|query|search)=([^&]+).*/\2/' | sed 's/+/\ /g' > "$filename"
 
     echo -e "\nData has been saved to $filename"
     read -p "Press Any Key to Return to Menu "
@@ -65,8 +62,7 @@ list_all_websites() {
     # Ask the user for a file name to save the data
     read -p "Enter a filename to save the data (e.g., visited_websites.txt): " filename
     sqlite3 "$PLACES_DB" "
-    SELECT url FROM moz_places ORDER BY visit_count DESC;
-    " | head -n 10 > "$filename"
+    SELECT url FROM moz_places ORDER BY visit_count DESC;" > "$filename"
 
     echo -e "\nData has been saved to $filename"
     read -p "Press Any Key to Return to Menu "
@@ -90,7 +86,7 @@ list_traffic_details() {
     FROM moz_places
     JOIN moz_historyvisits ON moz_places.id = moz_historyvisits.place_id
     ORDER BY visit_time DESC;
-    " | head -n 10 > "$filename"
+    " > "$filename"
 
     echo -e "\nData has been saved to $filename"
     read -p "Press Any Key to Return to Menu "
@@ -98,6 +94,7 @@ list_traffic_details() {
 
 # Function to count and display website visit statistics
 list_webvisit_count() {
+	read -p "Enter the Filename where your dataset Located(e.g., website_data.txt):" filename
     clear
     echo -e "\n\e[1;32mFetching the counts...\e[0m"
     
@@ -114,7 +111,7 @@ list_webvisit_count() {
         else
             counts["other_sites"]=$((counts["other_sites"] + 1))
         fi
-    done < "$input_file"
+    done < $filename
 
     # Display the counts in a table format
     echo -e "\n\e[1;33mVisited Website Counts:\e[0m"
