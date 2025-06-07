@@ -1,47 +1,94 @@
-Firefox Web Scraper
+# 🦊 Firefox Web Scraper
 
-Firefox Web Scraper is a bash script tool designed to scrape and analyze your Firefox browsing history. It interacts directly with Firefox's internal SQLite database (places.sqlite) to extract data such as visited websites, search keywords, traffic details, and provides detailed statistics on website visits.
+A powerful and user-friendly **Bash script tool** for extracting, analyzing, and exporting Firefox browsing history. This tool interacts directly with Firefox’s internal **SQLite database** (`places.sqlite`) to generate insightful statistics about your online activity.
 
-This tool is helpful for users who want to analyze their Firefox browsing history for research, personal insights, or data recovery purposes. It comes with an easy-to-use, text-based menu system, allowing you to fetch and store various types of browser history data.
-Features:
-    Search Keywords: Extracts and lists search terms from your browsing history (e.g., Google, Bing).
-    Visited Websites: Displays the most frequently visited websites from your Firefox history.
-    Traffic Details: Fetches detailed visit information, including timestamps for when each website was visited.
-    Website Visit Counts: Provides statistics about the number of times specific websites (e.g., YouTube, Instagram) were visited, including breakdowns for categories like Shorts and Reels.
-    Export Data: Allows users to save the scraped data to a text file for further analysis.
+> 📊 Ideal for researchers, digital forensics experts, privacy auditors, or anyone interested in analyzing their browsing behavior.
 
-Requirements:
-    Linux: This script is designed to work on Linux-based systems (Ubuntu, Fedora, etc.).
-    Firefox: The script relies on Firefox’s profile and places.sqlite database, which stores browsing history.
-    SQLite3: The script uses sqlite3 to query the Firefox database.
-    Bash: The tool is written in bash, making it easy to use on Linux systems.
-Installation:
-    Clone the repository:
+---
 
-    git clone https://github.com/whoami01111010/firefox-web-scraper.git
-    cd firefox-web-scraper
+## 🚀 Features
 
-Make the script executable:
+- 🔍 **Search Keywords Extraction**  
+  Extracts search queries from engines like Google, Bing, and others.
 
-    chmod +x firefox-web-scraper.sh
+- 🌐 **Visited Websites Analysis**  
+  Displays the most frequently visited domains in tabular form.
 
-Run the script:
+- 🕵️ **Traffic Timeline Details**  
+  Fetches URLs with visit timestamps for chronological insights.
 
-    ./firefox-web-scraper.sh
+- 📈 **Website Visit Counts**  
+  Displays visit statistics for common platforms (YouTube, Instagram, etc.), including Shorts and Reels.
 
-How It Works:
+- 💾 **Data Export Support**  
+  Option to save any output to a `.txt` file for backup or further analysis.
 
-The script interacts with Firefox's places.sqlite file located in the user’s profile folder.
-    It queries the SQLite database to extract:
-        Search keywords (search?q=)
-        Visited websites and their visit counts
-        Traffic details with visit timestamps
-        Counts of specific websites (like YouTube, Instagram) with optional breakdowns (Shorts, Reels)
-    The results are displayed in a tabular format, and users can choose to save the output to a file.
+---
 
-Menu Options:
-    List all search keywords: Extracts and displays the search terms used in the browser.
-    List all visited websites: Lists the websites you’ve visited most frequently.
-    List all traffic details: Displays the visit timestamps along with URLs.
-    List counts of visited websites: Displays the counts of visits for specific websites (YouTube, Instagram, etc.).
-    Exit: Exit the script.
+## 📦 Requirements
+
+- 🐧 Linux (Ubuntu, Kali, Fedora, etc.)
+- 🔥 Firefox browser (profile required)
+- 🗃️ `sqlite3` installed (`sudo apt install sqlite3`)
+- 🖥️ Bash shell
+
+---
+
+## 📥 Installation
+
+1.Clone the repository using Git:
+
+```bash
+git clone https://github.com/whoami01111010/firefox-web-scraper.git
+cd firefox-web-scraper
+```
+2.Make the script executable:
+```
+chmod +x firefox-web-scraper.sh
+```
+3.Run the script:
+```
+./firefox-web-scraper.sh
+```
+---
+🛠️ How It Works
+
+    The script locates your Firefox places.sqlite file, usually found in your profile directory (~/.mozilla/firefox/*.default-release/places.sqlite).
+    It runs SQLite queries to fetch the following:
+
+        ✅ Search terms (search?q=)
+        ✅ URLs visited and visit counts
+        ✅ Exact timestamps of visits
+        ✅ Filters for platforms like YouTube, Instagram, etc.
+
+    Results are presented in a clean, text-based format and can optionally be saved to a file.
+---
+📜 Menu Options
+-Upon launching, you’ll see a text-based interface with options:
+
+1. List all search keywords
+2. List all visited websites
+3. List all traffic details (URLs + timestamps)
+4. List counts of visited websites (YouTube, Instagram, etc.)
+5. Exit
+---
+
+Select any option by entering the corresponding number.
+📁 Example Output (Visit Stats)
+Website	Visit Count
+youtube.com	132
+|instagram.com|	78|
+|facebook.com |	45|
+
+🔒 Privacy Note
+This tool analyzes your own local Firefox history only. It does not transmit or expose data externally. Use responsibly.
+
+⚠️ Disclaimer
+This tool is intended for educational, auditing, or recovery purposes only. Use it only on Firefox profiles you own or have permission to inspect.
+
+📜 License
+This project is licensed under the MIT License. See the LICENSE file for details.
+
+👨‍💻 Author
+whoami01111010
+GitHub: github.com/whoami01111010
