@@ -52,15 +52,12 @@ chmod +x firefox-web-scraper.sh
 ```
 ---
 🛠️ How It Works
-
     The script locates your Firefox places.sqlite file, usually found in your profile directory (~/.mozilla/firefox/*.default-release/places.sqlite).
     It runs SQLite queries to fetch the following:
-
         ✅ Search terms (search?q=)
         ✅ URLs visited and visit counts
         ✅ Exact timestamps of visits
         ✅ Filters for platforms like YouTube, Instagram, etc.
-
     Results are presented in a clean, text-based format and can optionally be saved to a file.
 ---
 📜 Menu Options
@@ -77,9 +74,10 @@ Select any option by entering the corresponding number.
 📁 Example Output (Visit Stats)
 Website	Visit Count
 youtube.com	132
-|instagram.com|	78|
-|facebook.com |	45|
-
+-------------------
+|instagram.com|78|
+|facebook.com|45|
+-------------------
 🔒 Privacy Note
 This tool analyzes your own local Firefox history only. It does not transmit or expose data externally. Use responsibly.
 
